@@ -27,6 +27,15 @@ for (let i = 0; i < students.length; i++) {
     studentList.appendChild(newLi);
     const studentName = document.createTextNode(element.name+' '+element.surname);
     newLi.appendChild(studentName)
+   
+    const rimuoviButton = document.createElement('button');
+
+    const buttonText = document.createTextNode('Rimuovi');
+
+    rimuoviButton.appendChild(buttonText);
+    rimuoviButton.addEventListener('click', (event) => removeStudent(element.name+' '+element.surname));
+    newLi.appendChild(rimuoviButton);
+    studentList.appendChild(newLi);
 }
 }
 
@@ -44,6 +53,11 @@ if(inputName.value !== '' && inputSurname.value !== '') {
     displayClassroom(classroom1.students)
 }
 
+}
+function removeStudent(Student){
+    const studentIndex = students.indexOf(student);
+    students.splice(studentIndex, 1);
+    displayList(students);
 }
 
 displayClassroom(students1)
