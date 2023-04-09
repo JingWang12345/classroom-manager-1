@@ -25,7 +25,8 @@ for (let i = 0; i < students.length; i++) {
     let studentList = document.getElementById('student-list');
     let newLi = document.createElement('li');
     studentList.appendChild(newLi);
-    const studentName = document.createTextNode(element.name+' '+element.surname);
+ 
+     const studentName = document.createTextNode(element.name+' '+element.surname);
     newLi.appendChild(studentName)
    
     const rimuoviButton = document.createElement('button');
@@ -33,15 +34,25 @@ for (let i = 0; i < students.length; i++) {
     const buttonText = document.createTextNode('Rimuovi');
 
     rimuoviButton.appendChild(buttonText);
-    rimuoviButton.addEventListener('click', (event) => removeStudent(element.name+' '+element.surname));
+    rimuoviButton.addEventListener('click', (event) => removeStudent(element));
     newLi.appendChild(rimuoviButton);
     studentList.appendChild(newLi);
+   
 }
 }
 
 function shuffleTheClassroom(){
+    
+        for (let i = students1.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            let temp = students1[i];
+            students1[i] =students1[j];
+            students1[j] = temp;
 
-}
+        }
+        displayClassroom(students1)
+    }
+
 
 function addStudentToClassroom(){
     const students = classroom1.students
@@ -54,10 +65,10 @@ if(inputName.value !== '' && inputSurname.value !== '') {
 }
 
 }
-function removeStudent(Student){
-    const studentIndex = students.indexOf(student);
-    students.splice(studentIndex, 1);
-    displayList(students);
+function removeStudent(student){
+    const studentIndex = students1.indexOf(student);
+    students1.splice(studentIndex, 1);
+    displayClassroom(students1);
 }
 
 displayClassroom(students1)
