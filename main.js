@@ -10,7 +10,7 @@ const student2 = new Student('Luis Alberto', 'Castro');
 const student3 = new Student('Davide', 'Consigliere');
 const student4 = new Student('Francesco', 'Badile');
 
-const classroom1 = new Classroom([student1, student2, student3, student4]);
+const classroom1 = new ClassRoom([student1, student2, student3, student4]);
 
 let students1 = classroom1.students;
 
@@ -27,7 +27,8 @@ for (let i = 0; i < students.length; i++) {
     studentList.appendChild(newLi);
  
      const studentName = document.createTextNode(element.name+' '+element.surname);
-    newLi.appendChild(studentName)
+    newLi.appendChild(studentName)   
+    
    
     const rimuoviButton = document.createElement('button');
 

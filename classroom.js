@@ -1,4 +1,4 @@
-class Classroom{
+class ClassRoom{
 
     constructor(students = []){
         this.students = students;
