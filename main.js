@@ -10,66 +10,87 @@ const student2 = new Student('Luis Alberto', 'Castro');
 const student3 = new Student('Davide', 'Consigliere');
 const student4 = new Student('Francesco', 'Badile');
 
-const classroom1 = new ClassRoom([student1, student2, student3, student4]);
+const arrayOfStudents = [student1, student2, student3, student4];
 
-let students1 = classroom1.students;
+const classroom1 = new ClassRoom(arrayOfStudents);
+displayClassroom(classroom1);
 
-console.log(students1);
 
-function displayClassroom(students){
+// function displayClassroom(classroom){
 
-document.getElementById('student-list').innerHTML = '';
+//     const studentList = document.getElementById('student-list');
+//     studentList.innerHTML = '';
 
-for (let i = 0; i < students.length; i++) {
-    const element = students[i];
-    let studentList = document.getElementById('student-list');
-    let newLi = document.createElement('li');
-    studentList.appendChild(newLi);
- 
-     const studentName = document.createTextNode(element.name+' '+element.surname);
-    newLi.appendChild(studentName)   
-    
-   
-    const rimuoviButton = document.createElement('button');
+//     for (let i = 0; i < classroom.students.length; i++) {
+//         const student = classroom.students[i];
+//         studentList.innerHTML += `<li class="list-element">${student.name} ${student.surname}<button>cancella</button></li>`
+        
+//     }
 
-    const buttonText = document.createTextNode('Rimuovi');
+// }
 
-    rimuoviButton.appendChild(buttonText);
-    rimuoviButton.addEventListener('click', (event) => removeStudent(element));
-    newLi.appendChild(rimuoviButton);
-    studentList.appendChild(newLi);
-   
+
+function displayClassroom(classroom) {
+    const studentList = document.getElementById('student-list');
+    studentList.innerHTML = '';
+    for (let i = 0; i < classroom.students.length; i++) {
+
+        const student = classroom.students[i];
+
+        const newLi = document.createElement('li');
+
+        const studentNode = document.createTextNode(student.surname + ' ' + student.name);
+
+        newLi.appendChild(studentNode);
+
+        const deleteBtn = document.createElement('button');
+
+        deleteBtn.classList.add('remove-btn');
+
+        const petFootImg = document.createElement('img');
+
+        petFootImg.classList.add('remove-img');
+
+        petFootImg.src = './assets/pet1.png'
+
+        deleteBtn.addEventListener('click', (event) => removeStudent(element));
+
+        deleteBtn.appendChild(petFootImg);
+
+        newLi.appendChild(deleteBtn);
+
+        studentList.appendChild(newLi);
+    }
 }
+
+
+function shuffleTheClassroom() {
+    classroom1.shuffleStudents();
+    displayClassroom(classroom1);
 }
 
-function shuffleTheClassroom(){
-    
-        for (let i = students1.length - 1; i > 0; i--) {
-            let j = Math.floor(Math.random() * (i + 1));
-            let temp = students1[i];
-            students1[i] =students1[j];
-            students1[j] = temp;
 
-        }
-        displayClassroom(students1)
+function addStudentToClassroom() {
+    const nameInput = document.getElementById('name-input');
+    const surnameInput = document.getElementById('surname-input');
+
+    const name = nameInput.value;
+    const surname = surnameInput.value;
+
+    if (name !== '' && surname !== '') {
+        const newStudent = new Student(name, surname);
+        classroom1.addStudent(newStudent);
+        displayClassroom(classroom1);
     }
 
-
-function addStudentToClassroom(){
-    const students = classroom1.students
-const inputName = document.getElementById('input-name');
-const inputSurname = document.getElementById('input-surname');
-const newStudent = new Student(inputName.value, inputSurname.value);
-if(inputName.value !== '' && inputSurname.value !== '') {
-    students.push(newStudent);
-    displayClassroom(classroom1.students)
 }
 
-}
-function removeStudent(student){
-    const studentIndex = students1.indexOf(student);
-    students1.splice(studentIndex, 1);
-    displayClassroom(students1);
+function removeStudentFromClassroom(student){
+    classroom1.removeStudent(student);
+    displayClassroom(classroom1);
 }
 
-displayClassroom(students1)
+function colorMainTitle(){
+    const mainTitle = document.querySelector('.main-title');
+    mainTitle.style.color = 'tomato';
+}

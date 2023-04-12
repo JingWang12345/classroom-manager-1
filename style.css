@@ -4,15 +4,15 @@
 
 body {
    
-    background-color: rgb(96, 137, 127);
+    background-color: rgb(33, 85, 72);
 }
 
-.titolo {
+.main-title {
     margin: 0px;
     padding: 0px;
     object-fit: fill;
     background: no-repeat;
-    height: 300px;
+    height: 400px;
     background-size: cover;
     background-image: url('./assets/3183.jpg_wh300.jpg');
     color: rgb(117, 54, 54);
@@ -28,4 +28,25 @@ h3 {
 
 ul {
     columns: 2;
+}
+
+.remove-btn{
+    width: 40px;
+    height: 40px;
+    padding: 0px;
+    border: none;
+    background-color: transparent;
+}
+
+
+.remove-img{
+    width: 100%;
+}
+
+.main-title{
+    text-transform: uppercase;
+}
+
+.list-element{
+    color: lime;
 }
