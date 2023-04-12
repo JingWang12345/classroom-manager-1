@@ -53,7 +53,7 @@ function displayClassroom(classroom) {
 
         petFootImg.src = './assets/pet1.png'
 
-        deleteBtn.addEventListener('click', (event) => removeStudent(element));
+        deleteBtn.addEventListener('click', (event) => removeStudentFromClassroom(student));
 
         deleteBtn.appendChild(petFootImg);
 
